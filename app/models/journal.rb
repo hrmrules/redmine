@@ -36,7 +36,7 @@ class Journal < ActiveRecord::Base
                             :author_key => :user_id,
                             :find_options => {:include => [{:issue => :project}, :details, :user],
                                               :conditions => "#{Journal.table_name}.journalized_type = 'Issue' AND" +
-                                                             " (#{JournalDetail.table_name}.prop_key = 'status_id' OR #{Journal.table_name}.notes <> '')"}
+                                                             " (#{JournalDetail.table_name}.prop_key = 'status_id' OR length(#{Journal.table_name}.notes) > 0)"}
 
   before_create :split_private_notes
   after_create :send_notification
