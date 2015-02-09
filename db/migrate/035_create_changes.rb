@@ -2,8 +2,8 @@ class CreateChanges < ActiveRecord::Migration
   def self.up
     create_table :changes do |t|
       t.column :changeset_id, :integer, :null => false
-      t.column :action, :string,  :limit => 1, :default => "", :null => false
-      t.column :path, :string, :default => "", :null => false
+      t.column :action, :string,  :limit => 1, :default => "", :null => true
+      t.column :path, :string, :default => "", :null => true
       t.column :from_path, :string
       t.column :from_revision, :integer
     end

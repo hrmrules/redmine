@@ -4,7 +4,7 @@ class RemoveEnumerationsOpt < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :enumerations, :opt, :string, :limit => 4, :default => '', :null => false
+    add_column :enumerations, :opt, :string, :limit => 4, :default => '', :null => true
     Enumeration.update_all("opt = 'IPRI'", "type = 'IssuePriority'")
     Enumeration.update_all("opt = 'DCAT'", "type = 'DocumentCategory'")
     Enumeration.update_all("opt = 'ACTI'", "type = 'TimeEntryActivity'")

@@ -1,6 +1,6 @@
 class ExtendSettingsName < ActiveRecord::Migration
   def self.up
-    change_column :settings, :name, :string, :limit => 255, :default => '', :null => false
+    change_column :settings, :name, :string, :limit => 255, :default => '', :null => true
   end
 
   def self.down

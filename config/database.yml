@@ -1,7 +1,7 @@
 production:
   adapter: oracle_enhanced
-  host: localhost
+  host: 192.168.44.1
   port: 1521
   database: XE
-  username: username
-  password: pass
+  username: redmine
+  password: redmine

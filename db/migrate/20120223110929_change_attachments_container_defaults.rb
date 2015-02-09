@@ -18,7 +18,7 @@ class ChangeAttachmentsContainerDefaults < ActiveRecord::Migration
     remove_index :attachments, [:container_id, :container_type]
 
     change_column :attachments, :container_id, :integer, :default => 0, :null => false
-    change_column :attachments, :container_type, :string, :limit => 30, :default => "", :null => false
+    change_column :attachments, :container_type, :string, :limit => 30, :default => "", :null => true
 
     add_index :attachments, [:container_id, :container_type]
   end
