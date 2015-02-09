@@ -1,0 +1,7 @@
+production:
+  adapter: oracle_enhanced
+  host: localhost
+  port: 1521
+  database: XE
+  username: username
+  password: pass
