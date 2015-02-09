@@ -1,6 +1,6 @@
 module OpenIdAuthentication
   class Association < ActiveRecord::Base
-    self.table_name = :open_id_authentication_associations
+    self.table_name = :open_id_auth_associations
 
     def from_record
       OpenID::Association.new(handle, secret, issued, lifetime, assoc_type)

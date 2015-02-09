@@ -1,4 +1,6 @@
 /.bundle/
 /log/
 /Gemfile.lock
+/db/schema.rb
+
 

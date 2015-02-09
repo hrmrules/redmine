@@ -174,7 +174,7 @@ class Setup < ActiveRecord::Migration
 
     create_table "projects", :force => true do |t|
       t.column "name", :string, :limit => 30, :default => "", :null => true
-      t.column "description", :string, :default => "", :null => true
+      t.column "description", :clob, :default => "", :null => true
       t.column "homepage", :string, :limit => 60, :default => ""
       t.column "is_public", :boolean, :default => true, :null => false
       t.column "parent_id", :integer
