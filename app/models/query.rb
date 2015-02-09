@@ -463,6 +463,7 @@ class Query < ActiveRecord::Base
   end
 
   def has_column?(column)
+    return false if !column_names.kind_of?(Array)
     column_names && column_names.include?(column.is_a?(QueryColumn) ? column.name : column)
   end
 
