@@ -162,7 +162,7 @@ module CollectiveIdea #:nodoc:
         def right_most_bound
           right_most_node =
             self.class.base_class.unscoped.
-              order("#{quoted_right_column_full_name} desc").limit(1).lock(true).first
+              order("#{quoted_right_column_full_name} desc").limit(1).first
           right_most_node ? (right_most_node[right_column_name] || 0) : 0
         end
 
