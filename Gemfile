@@ -8,6 +8,8 @@ gem "builder", ">= 3.0.4"
 gem "request_store", "1.0.5"
 gem "mime-types"
 gem "rbpdf", "~> 1.18.4"
+gem "sqlite3", :platforms => [:mri, :mingw]
+gem "activerecord-jdbcsqlite3-adapter", "1.3.11", :platforms => :jruby
 
 gem "i18n", "~> 0.6.11"
 
@@ -64,9 +66,6 @@ if File.exist?(database_file)
       when /postgresql/
         gem "pg", "~> 0.17.1", :platforms => [:mri, :mingw]
         gem "activerecord-jdbcpostgresql-adapter", :platforms => :jruby
-      when /sqlite3/
-        gem "sqlite3", :platforms => [:mri, :mingw]
-        gem "activerecord-jdbcsqlite3-adapter", "1.3.11", :platforms => :jruby
       when /sqlserver/
         gem "tiny_tds", "~> 0.6.2", :platforms => [:mri, :mingw]
         gem "activerecord-sqlserver-adapter", :platforms => [:mri, :mingw]
