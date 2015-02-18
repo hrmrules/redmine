@@ -24,7 +24,7 @@ namespace :redmine do
   task :migrate_from_trac => :environment do
 
     module TracMigrate
-        TICKET_MAP = []
+        TICKET_MAP = {}
 
         DEFAULT_STATUS = IssueStatus.default
         assigned_status = IssueStatus.find_by_position(2)
@@ -506,14 +506,14 @@ namespace :redmine do
                    (STATUS_MAPPING[status_change.oldvalue] != STATUS_MAPPING[status_change.newvalue])
                 n.details << JournalDetail.new(:property => 'attr',
                                                :prop_key => 'status_id',
-                                               :old_value => STATUS_MAPPING[status_change.oldvalue].id,
-                                               :value => STATUS_MAPPING[status_change.newvalue].id)
+                                               :old_value => STATUS_MAPPING[status_change.oldvalue].id.to_s,
+                                               :value => STATUS_MAPPING[status_change.newvalue].id.to_s)
               end
               if resolution_change
                 n.details << JournalDetail.new(:property => 'cf',
-                                               :prop_key => custom_field_map['resolution'].id,
-                                               :old_value => resolution_change.oldvalue,
-                                               :value => resolution_change.newvalue)
+                                               :prop_key => custom_field_map['resolution'].id.to_s,
+                                               :old_value => resolution_change.oldvalue.to_s,
+                                               :value => resolution_change.newvalue.to_s)
               end
               n.save unless n.details.empty? && n.notes.blank?
           end
