@@ -38,6 +38,9 @@ fork of Redmine is available from the following repositiory:
 `git clone https://github.com/hrmrules/redmine-oracle.git`
 In the redmine-oracle directory: `git checkout 2.6.1-oracle`
 
+Change privileges for redmine-oracle for apache access
+`chmod -R g+w .`
+
 In the following REDMINE_HOME refers to this directory.
 
 **Configuring database**
