@@ -1,7 +1,5 @@
 production:
   adapter: oracle_enhanced
-  host: 192.168.44.1
-  port: 1521
-  database: XE
-  username: redmine
-  password: redmine
+  database: ABSTEST.BERENDSEN.AD
+  username: bosmine
+  password: bosmine
