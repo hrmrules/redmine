@@ -1429,14 +1429,14 @@ class Issue < ActiveRecord::Base
   # Callback on file attachment
   def attachment_added(obj)
     if @current_journal && !obj.new_record?
-      @current_journal.details << JournalDetail.new(:property => 'attachment', :prop_key => obj.id, :value => obj.filename)
+      @current_journal.details << JournalDetail.new(:property => 'attachment', :prop_key => obj.id.to_s, :value => obj.filename)
     end
   end
 
   # Callback on attachment deletion
   def attachment_removed(obj)
     if @current_journal && !obj.new_record?
-      @current_journal.details << JournalDetail.new(:property => 'attachment', :prop_key => obj.id, :old_value => obj.filename)
+      @current_journal.details << JournalDetail.new(:property => 'attachment', :prop_key => obj.id.to_s, :old_value => obj.filename)
       @current_journal.save
     end
   end
@@ -1505,9 +1505,9 @@ class Issue < ActiveRecord::Base
           after = send(c)
           next if before == after || (before.blank? && after.blank?)
           @current_journal.details << JournalDetail.new(:property => 'attr',
-                                                        :prop_key => c,
-                                                        :old_value => before,
-                                                        :value => after)
+                                                        :prop_key => c.to_s,
+                                                        :old_value => before.to_s,
+                                                        :value => after.to_s)
         }
       end
       if @custom_values_before_change
@@ -1524,22 +1524,22 @@ class Issue < ActiveRecord::Base
             # values removed
             (before - after).reject(&:blank?).each do |value|
               @current_journal.details << JournalDetail.new(:property => 'cf',
-                                                            :prop_key => c.custom_field_id,
-                                                            :old_value => value,
+                                                            :prop_key => c.custom_field_id.to_s,
+                                                            :old_value => value.to_s,
                                                             :value => nil)
             end
             # values added
             (after - before).reject(&:blank?).each do |value|
               @current_journal.details << JournalDetail.new(:property => 'cf',
-                                                            :prop_key => c.custom_field_id,
+                                                            :prop_key => c.custom_field_id.to_s,
                                                             :old_value => nil,
-                                                            :value => value)
+                                                            :value => value.to_s)
             end
           else
             @current_journal.details << JournalDetail.new(:property => 'cf',
-                                                          :prop_key => c.custom_field_id,
-                                                          :old_value => before,
-                                                          :value => after)
+                                                          :prop_key => c.custom_field_id.to_s,
+                                                          :old_value => before.to_s,
+                                                          :value => after.to_s)
           end
         }
       end
