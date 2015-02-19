@@ -185,10 +185,11 @@ module CollectiveIdea #:nodoc:
 
         # reload left, right, and parent
         def reload_nested_set
+puts "--->Before reload...."
           reload(
-            :select => "#{quoted_left_column_full_name}, #{quoted_right_column_full_name}, #{quoted_parent_column_full_name}",
-            :lock => true
+            :select => "#{quoted_left_column_full_name}, #{quoted_right_column_full_name}, #{quoted_parent_column_full_name}"
           )
+puts "--->After reload...."
         end
 
         def reload_target(target)
